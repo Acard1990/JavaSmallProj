@@ -6,6 +6,8 @@ plugins {
 	id 'jacoco'
 }
 
+// apply plugin: 'io.cucumber.cucumber-reporting'
+
 group = 'com.stormwind'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -16,7 +18,7 @@ repositories {
 sourceSets {
 	integrationtest {
 		java {
-			srcDirs = ["java/integrationTest"]
+			srcDirs = ["src/test/java"]
 		}
 	}
 }
@@ -42,31 +44,27 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
-	testImplementation 'io.rest-assured:rest-assured:4.5.1'
+	implementation 'com.h2database:h2'
+	testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.5.1'
+	integrationtestImplementation 'org.codehaus.groovy:groovy-xml:2.5.14'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation "org.mockito:mockito-core:4.8.0"
+	testImplementation 'org.mockito:mockito-core:5.2.0'
 	testImplementation('junit:junit:4.13.2')
-	testImplementation "io.cucumber:cucumber-java:7.8.+"
-	testImplementation "io.cucumber:cucumber-junit:7.8.+"
-	testImplementation "io.cucumber:cucumber-spring:7.8.+"
-	compileOnly 'org.projectlombok:lombok:1.18.24'
-	annotationProcessor 'org.projectlombok:lombok:1.18.24'
-	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testImplementation 'io.cucumber:cucumber-java:7.11.1'
+	testImplementation 'io.cucumber:cucumber-junit:7.11.1'
+	testImplementation 'io.cucumber:cucumber-spring:7.11.1'
+	compileOnly 'org.projectlombok:lombok:1.18.26'
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+	testCompileOnly 'org.projectlombok:lombok:1.18.26'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 	integrationtestCompileOnly "org.projectlombok:lombok"
 	integrationtestAnnotationProcessor "org.projectlombok:lombok"
-	//    Provide at compile-time the classes produced by main and test
+
 	integrationtestImplementation sourceSets.main.output
 	integrationtestImplementation sourceSets.test.output
 
-	//    Provide at compile-time the dependencies that main and test require
 	integrationtestImplementation configurations.implementation
 	integrationtestImplementation configurations.testImplementation
-
-	//    Provide at run-time the dependencies that main and test require
-//	integrationtestRuntime configurations.runtime
-//	integrationtestRuntime configurations.testRuntime
 }
 
 tasks.named('test') {
@@ -86,8 +84,9 @@ task cucumberCli() {
 			args = [
 					'--plugin', 'pretty',
 					'--plugin', 'html:target/cucumber-report.html',
-					'--glue', 'src/integrationTests/java/resources/features/appUser.feature']
-					//'src/integrationTests/java/resources/features/appUser.feature']
+					'--glue', 'src/test/integrationTest'
+			]
+			args += fileTree(dir: 'src/test/java/resources/features', include: '**/*.feature').asFileTree.files // Include all feature files
 		}
 	}
 }
