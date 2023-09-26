@@ -20,6 +20,7 @@ public class AppUserController {
 
     // save users
     @PostMapping("/appUsers")
+    @CrossOrigin(origins = {"http://localhost:3000", "https://acard1990.github.io"})
     public AppUser saveAppUser (
         @RequestBody AppUser appUser) {
         System.out.println("Called save user request with the following: " + appUser);
@@ -33,7 +34,7 @@ public class AppUserController {
 
     // get all users users
     @GetMapping("/appUsers")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "https://acard1990.github.io"})
     public List<AppUser> fetchAppUsersList() {
         List<AppUser> appUsers = appUserService.fetchAppUserList();
         System.out.println("Get all user(s) request called" + appUsers);
@@ -42,6 +43,7 @@ public class AppUserController {
 
     // update user
     @PutMapping("/appUsers/update/{id}")
+    @CrossOrigin(origins = {"http://localhost:3000", "https://acard1990.github.io"})
     public AppUser updateAppUser(@RequestBody AppUser appUser, @PathVariable("id") UUID appUserId)
     {
         System.out.println("Update user request for userId: " + appUserId);
@@ -51,6 +53,7 @@ public class AppUserController {
 
     // Delete user
     @DeleteMapping("/appUsers/delete/{id}")
+    @CrossOrigin(origins = {"http://localhost:3000", "https://acard1990.github.io"})
     public String deleteAppUserById(@PathVariable("id") UUID appUserId)
     {
         System.out.println("Delete user request for userId: " + appUserId);
