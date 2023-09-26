@@ -28,8 +28,8 @@ public class scottSmallProject {
 	public CommandLineRunner demo(AppUserRepository repository) {
 		return (args) -> {
 			// save a few customers
-			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b9"), "User", "One", "User.One@bc.com"));
-			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b8"), "User", "Two", "User.Two@bc.com"));
+			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b9"), "John", "Doe", "John.Doe@test.com"));
+			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b8"), "Jane", "Doe", "Jane.Doe@test.com"));
 
 			// fetch all customers
 			log.info("Customers found with findAll():");
