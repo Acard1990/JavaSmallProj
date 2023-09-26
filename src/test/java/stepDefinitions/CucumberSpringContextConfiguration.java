@@ -1,6 +1,6 @@
 package stepDefinitions;
 
-import com.derp.scottSmallProj.ScottOnboardingApplication;
+import com.derp.scottSmallProj.scottSmallProject;
 import io.cucumber.java.Before;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.slf4j.Logger;
@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-@SpringBootTest(classes = ScottOnboardingApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(classes = ScottOnboardingApplication.class, loader = SpringBootContextLoader.class)
+@SpringBootTest(classes = scottSmallProject.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration(classes = scottSmallProject.class, loader = SpringBootContextLoader.class)
 @CucumberContextConfiguration
 public class CucumberSpringContextConfiguration {
 

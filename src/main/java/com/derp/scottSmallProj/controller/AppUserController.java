@@ -33,6 +33,7 @@ public class AppUserController {
 
     // get all users users
     @GetMapping("/appUsers")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<AppUser> fetchAppUsersList() {
         List<AppUser> appUsers = appUserService.fetchAppUserList();
         System.out.println("Get all user(s) request called" + appUsers);
