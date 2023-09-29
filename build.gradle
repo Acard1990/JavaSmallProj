@@ -6,8 +6,6 @@ plugins {
 	id 'jacoco'
 }
 
-// apply plugin: 'io.cucumber.cucumber-reporting'
-
 group = 'com.stormwind'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -63,8 +61,15 @@ dependencies {
 	integrationtestImplementation sourceSets.main.output
 	integrationtestImplementation sourceSets.test.output
 
-	integrationtestImplementation configurations.implementation
-	integrationtestImplementation configurations.testImplementation
+	integrationtestImplementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	integrationtestImplementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	integrationtestImplementation 'org.springframework.boot:spring-boot-starter-web'
+	integrationtestImplementation 'com.h2database:h2'
+
+
+//	integrationtestImplementation configurations.implementation
+//	integrationtestImplementation configurations.testImplementation
+
 }
 
 tasks.named('test') {
