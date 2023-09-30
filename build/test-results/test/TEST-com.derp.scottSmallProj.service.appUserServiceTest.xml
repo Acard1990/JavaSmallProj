@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.derp.scottSmallProj.service.appUserServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-09-30T00:21:07" hostname="Scotts-MacBook-Pro-2.local" time="0.408">
+  <properties/>
+  <testcase name="fetchAppUserList()" classname="com.derp.scottSmallProj.service.appUserServiceTest" time="0.387"/>
+  <testcase name="saveAppUser()" classname="com.derp.scottSmallProj.service.appUserServiceTest" time="0.008"/>
+  <testcase name="deleteAppUserById()" classname="com.derp.scottSmallProj.service.appUserServiceTest" time="0.004"/>
+  <testcase name="updateAppUser()" classname="com.derp.scottSmallProj.service.appUserServiceTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

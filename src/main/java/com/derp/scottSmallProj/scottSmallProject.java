@@ -24,20 +24,20 @@ public class scottSmallProject {
 	}
 
 	// You can use this for manually testing the application, however, just running cucumber test should be helpful
-	@Bean
-	public CommandLineRunner demo(AppUserRepository repository) {
-		return (args) -> {
-			// save a few customers
-			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b9"), "John", "Doe", "John.Doe@test.com"));
-			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b8"), "Jane", "Doe", "Jane.Doe@test.com"));
-
-			// fetch all customers
-			log.info("Customers found with findAll():");
-			log.info("-------------------------------");
-			for (AppUser appUser : repository.findAll()) {
-				log.info(appUser.toString());
-			}
-			log.info("");
-		};
-	}
+//	@Bean
+//	public CommandLineRunner demo(AppUserRepository repository) {
+//		return (args) -> {
+//			// save a few customers
+//			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b9"), "John", "Doe", "John.Doe@test.com"));
+//			repository.save(new AppUser(UUID.fromString("8aa059f9-564b-436e-ae18-79ec06d868b8"), "Jane", "Doe", "Jane.Doe@test.com"));
+//
+//			// fetch all customers
+//			log.info("Customers found with findAll():");
+//			log.info("-------------------------------");
+//			for (AppUser appUser : repository.findAll()) {
+//				log.info(appUser.toString());
+//			}
+//			log.info("");
+//		};
+//	}
 }

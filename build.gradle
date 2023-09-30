@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.6'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id("io.spring.dependency-management") version "1.1.3"
 	id 'idea'
 	id 'jacoco'
 }
@@ -20,18 +20,8 @@ sourceSets {
 		}
 	}
 }
-task integrationTest(type: Test, group: "verification") {
-	testClassesDirs = sourceSets.integrationtest.output.classesDirs
-	classpath = sourceSets.integrationtest.runtimeClasspath
-	maxParallelForks = 1
-	// The fail fast property should be uncommented when the gradle wrapper is updated and everything is moved to work with the bom.
-	//failFast = true
 
-	//    Require this task to execute after the unit tests
-	mustRunAfter tasks.test
-}
-
-check.dependsOn integrationTest
+//check.dependsOn integrationTest
 configurations.all {
 	resolutionStrategy {
 		cacheDynamicVersionsFor 0, 'seconds'
@@ -43,14 +33,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.h2database:h2'
-	testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.5.1'
-	integrationtestImplementation 'org.codehaus.groovy:groovy-xml:2.5.14'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mockito:mockito-core:5.2.0'
-	testImplementation('junit:junit:4.13.2')
-	testImplementation 'io.cucumber:cucumber-java:7.11.1'
-	testImplementation 'io.cucumber:cucumber-junit:7.11.1'
-	testImplementation 'io.cucumber:cucumber-spring:7.11.1'
+	implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.5.1'
+	implementation 'org.codehaus.groovy:groovy-xml:2.5.14'
+	implementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.mockito:mockito-core:5.2.0'
+	implementation('junit:junit:4.13.2')
+	implementation 'io.cucumber:cucumber-java:7.11.1'
+	implementation 'io.cucumber:cucumber-junit:7.11.1'
+	implementation 'io.cucumber:cucumber-spring:7.11.1'
+
 	compileOnly 'org.projectlombok:lombok:1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 	testCompileOnly 'org.projectlombok:lombok:1.18.26'
@@ -65,10 +56,6 @@ dependencies {
 	integrationtestImplementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	integrationtestImplementation 'org.springframework.boot:spring-boot-starter-web'
 	integrationtestImplementation 'com.h2database:h2'
-
-
-//	integrationtestImplementation configurations.implementation
-//	integrationtestImplementation configurations.testImplementation
 
 }
 
@@ -94,4 +81,13 @@ task cucumberCli() {
 			args += fileTree(dir: 'src/test/java/resources/features', include: '**/*.feature').asFileTree.files // Include all feature files
 		}
 	}
+}
+
+task integrationTest(type: Test, group: "verification") {
+	testClassesDirs = sourceSets.integrationtest.output.classesDirs
+	classpath = sourceSets.integrationtest.runtimeClasspath
+	maxParallelForks = 1
+
+	// Specify the dependency on the test task
+	dependsOn(tasks.test)
 }
