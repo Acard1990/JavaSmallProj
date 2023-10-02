@@ -8,7 +8,7 @@ import java.util.UUID;
 public class AppUser {
 
     @Id
-    @Column(columnDefinition = "BINARY(16)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "email")
