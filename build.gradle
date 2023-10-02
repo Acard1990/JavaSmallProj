@@ -5,6 +5,9 @@ plugins {
 	id 'idea'
 	id 'jacoco'
 }
+springBoot {
+	mainClass = 'com.derp.scottSmallProj.scottSmallProject'
+}
 
 group = 'com.stormwind'
 version = '0.0.1-SNAPSHOT'
