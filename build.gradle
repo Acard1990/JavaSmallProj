@@ -3,7 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.6'
 	id("io.spring.dependency-management") version "1.1.3"
 	id 'idea'
-	id 'jacoco'
+	// id 'jacoco'
 	id 'application'
 }
 
@@ -20,6 +20,7 @@ targetCompatibility = '11'
 repositories {
 	mavenCentral()
 }
+
 sourceSets {
 	integrationtest {
 		java {
@@ -28,7 +29,6 @@ sourceSets {
 	}
 }
 
-//check.dependsOn integrationTest
 configurations.all {
 	resolutionStrategy {
 		cacheDynamicVersionsFor 0, 'seconds'
