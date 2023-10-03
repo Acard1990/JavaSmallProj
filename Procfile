@@ -1,3 +1,3 @@
-web: ./gradlew bootRun
+web: -Xmx128m ./gradlew bootRun
 
 
