@@ -1,6 +1,6 @@
-//package com.stormwind.scottOnboarding.controller;
+//package com.derp.scottSmallProj.controller;
 //
-//import com.stormwind.scottOnboarding.entity.AppUser;
+//import com.derp.scottSmallProj.entity.AppUser;
 //import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.api.extension.ExtendWith;
 //import org.mockito.InjectMocks;

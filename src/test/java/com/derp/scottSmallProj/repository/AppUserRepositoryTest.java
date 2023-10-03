@@ -34,7 +34,7 @@ class AppUserRepositoryTest {
     @Order(2)
     void getUserById() {
         UUID userUUID = UUID.fromString("2b95a194-91e2-4a40-b605-d49034311347");
-        AppUser appUser = new AppUser(userUUID,"test","user","test.user@email.com");
+        AppUser appUser = new AppUser(userUUID, "test","user","test.user@email.com");
         Assertions.assertThat(appUser.getId()).isEqualTo(userUUID);
     }
 
@@ -43,7 +43,7 @@ class AppUserRepositoryTest {
     @Order(3)
     void deleteUserById() {
         UUID userUUID = UUID.fromString("2b95a194-91e2-4a40-b605-d49034311347");
-        AppUser appUser = new AppUser(userUUID,"test","user","test.user@email.com");
+        AppUser appUser = new AppUser(userUUID, "test","user","test.user@email.com");
         appUserRepository.delete(appUser);
         // assert
     }

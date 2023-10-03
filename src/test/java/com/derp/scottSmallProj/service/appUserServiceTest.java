@@ -28,7 +28,8 @@ class appUserServiceTest {
 
     public UUID makeUUID(){
         UUID uuid;
-        return uuid = UUID.randomUUID();
+        // return uuid = UUID.randomUUID();
+        return null;
     }
 
     @BeforeEach
@@ -67,11 +68,11 @@ class appUserServiceTest {
     void updateAppUser() {
         UUID userUUID = UUID.fromString("2b95a194-91e2-4a40-b605-d49034311347");
         // create user to update
-        AppUser user1 = new AppUser(userUUID,"test","user","test.user@email.com");
+        AppUser user1 = new AppUser(userUUID, "test","user","test.user@email.com");
         appUserService.saveAppUser(user1);
 
         // update user that was created previously
-        AppUser userUpdated = new AppUser(userUUID, "updatedFirst","user","test.user@email.com");
+        AppUser userUpdated = new AppUser(userUUID,"updatedFirst","user","test.user@email.com");
         appUserService.updateAppUser(userUpdated, userUUID);
 
         // validation
