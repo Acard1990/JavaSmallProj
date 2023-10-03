@@ -99,3 +99,8 @@ task integrationTest(type: Test, group: "verification") {
 	// Specify the dependency on the test task
 	dependsOn(tasks.test)
 }
+
+bootRun {
+	mainClassName = 'com.derp.scottSmallProj.scottSmallProject'
+	jvmArgs = ['-Xmx256m', '-Xms128m']
+}
