@@ -102,5 +102,5 @@ task integrationTest(type: Test, group: "verification") {
 
 bootRun {
 	mainClassName = 'com.derp.scottSmallProj.scottSmallProject'
-	jvmArgs = ['-Xmx256m', '-Xms128m', '-XX:+UseG1GC']
+	jvmArgs = ['-Xmx256m', '-Xms128m', '-XX:+UseSerialGC']
 }
